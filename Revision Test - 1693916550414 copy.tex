@@ -1,0 +1,507 @@
+\documentclass[10pt, a4paper]{article} 
+
+% PACKAGES
+    \usepackage[english]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage{fancyhdr}
+    \usepackage{lastpage}
+    \usepackage[left=2cm,right=2cm,bottom=1.5cm,top=2.025cm,headsep=0.5cm,footskip=0.55cm]{geometry}
+    \usepackage{xcolor}
+    \usepackage{hyperref}
+    \usepackage[explicit]{titlesec}
+    \usepackage[document]{ragged2e}
+    \usepackage{physics}
+    \usepackage{multido}
+    \usepackage{amsmath}
+    \usepackage{tikz}
+    \usepackage{mathdots}
+    \usepackage{yhmath}
+    \usepackage{cancel}
+    \usepackage{color}
+    \usepackage{calc}
+    \usepackage{calculator}
+    \usepackage{siunitx}
+    \usepackage{array}
+    \usepackage{multirow}
+    \usepackage{amssymb}
+    \usepackage{gensymb}
+    \usepackage{tabularx}
+    \usepackage{booktabs}
+    \usepackage{ifthen}
+    \usepackage{xparse}
+    \usepackage{xstring}
+    \usepackage{fp}
+    \usepackage{listings}
+    \usepackage[many]{tcolorbox}
+    \usepackage{fontspec}
+    \usepackage[english]{babel}
+    \usepackage{soul}
+    \usepackage{color, colortbl}
+    \usepackage{cancel}
+    \usepackage[inline,shortlabels]{enumitem}
+    \usepackage{tasks}
+    \usepackage{setspace}
+    \usepackage{titlesec}
+    \usepackage{anyfontsize}
+    \usepackage[normalem]{ulem}
+    \usepackage[T1]{fontenc}
+    \usepackage{arrayjobx}
+    \usepackage{subfiles}
+    \usepackage{wallpaper}
+    \usepackage{eso-pic}
+    \usepackage{transparent}
+    \usepackage{tikzpagenodes}
+    \usepackage{framed}
+    \usepackage{lipsum}
+    \usepackage{xespotcolor} 
+    \usepackage{nameref}
+    \usepackage{changepage}
+    \usepackage{etoolbox}
+    \usepackage{multicol}
+
+
+    \pagestyle{empty}
+
+    \setmainfont{Latin Modern Roman}
+    \setsansfont{Latin Modern Sans}
+    \renewcommand{\familydefault}{\sfdefault}
+
+    %$$ DEFINING COLOURS %%
+    \definecolor{outcomeColour}{cmyk}{0.09 0.06 0.00 0.05}%
+
+    \definecolor{melbBlue}{RGB}{9,65,131}%
+    \definecolor{melbLightBlue}{RGB}{173,205,240}%
+    \definecolor{melbDarkBlue}{RGB}{64,116,178}%
+
+    \definecolor{melbDarkTeal}{RGB}{63,167,194}%
+    \definecolor{melbLightTeal}{RGB}{124,189,206}%
+
+    \definecolor{melbDarkEmerald}{RGB}{89,177,127}%
+    \definecolor{melbLightEmerald}{RGB}{152,214,195}%
+
+    \definecolor{melbLightGreen}{RGB}{218,226,153}%
+    \definecolor{melbDarkGreen}{RGB}{161,209,114}%
+
+    \definecolor{melbDarkYellow}{RGB}{236,174,101}%
+    \definecolor{melbLightYellow}{RGB}{255,220,162}%
+
+    \definecolor{melbDarkOrange}{RGB}{231,112,82}%
+    \definecolor{melbLightOrange}{RGB}{255,164,120}%
+
+    \definecolor{melbLightPurple}{RGB}{176,188,225}%
+    \definecolor{melbDarkPurple}{RGB}{114,131,191}%
+
+    \definecolor{melbLightPink}{RGB}{255,189,204}%
+    \definecolor{melbDarkPink}{RGB}{238,136,137}%
+
+    \definecolor{melbGrey}{RGB}{153,162,170}%
+
+    %%% SHADING COLOUR %%%
+
+    \usetikzlibrary{fadings}
+    \usetikzlibrary{patterns}
+    \usetikzlibrary{shadows.blur}
+    \usetikzlibrary{shapes}
+
+    \usepackage{float}
+        \floatstyle{boxed} 
+        \restylefloat{figure}
+
+%% CUSTOMISATION,RENEWED COMMANDS
+
+    \fancypagestyle{myfancy}{%
+        \fancyhf{}
+        \renewcommand{\headrulewidth}{0pt}
+        \renewcommand{\footrulewidth}{0pt}
+            \lfoot{\hyperref[toc]{\textbf{Foundations of Clinical Practice} | \blockName}}
+            \rfoot{Page \textbf{\thepage} of \textbf{\pageref{LastPage}}}}
+                
+    \fancypagestyle{toc}{%
+        \fancyhf{}
+        \renewcommand{\headrulewidth}{0pt}
+        \renewcommand{\footrulewidth}{0pt}
+            \lfoot{\hyperref[toc]{\textbf{Foundations of Clinical Practice} | \blockName}}
+            \rfoot{Page \textbf{\thepage} of \textbf{\pageref{LastPage}}}}
+    
+     \newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+    \newcommand{\makeTitle}{%
+      \thispagestyle{empty}
+          \vspace*{2cm}\hspace*{-1cm}
+          \parbox[t][10cm][b]{\textwidth}
+            {{\fontsize{29}{50}{\bfseries\fontspec{Helvetica Neue}\textcolor{black}{Foundations of Clinical Practice}}}
+                \vspace{14pt}\\
+                {\fontsize{18}{30}{\raggedright\fontspec{Helvetica Neue}\textcolor{black}{\blockName~Block | Learning Outcomes}\par}}
+                \vspace{24pt}
+                \hrule
+                \vspace{24pt}
+                {\fontsize{12}{30}
+                \fontspec{Helvetica Neue Light}Published: \today \par}
+                \vspace{0.4cm}}
+
+          \newpage
+
+          \pagestyle{myfancy}%
+          }
+
+    % HYPERLINKING FUNCTIONALITY
+
+    \hypersetup{
+        colorlinks=true,
+        urlcolor=black,
+        anchorcolor = blue]{hyperref}
+        }
+
+    \newcommand{\MYhref}[3][blue]{\href{#2}{\color{#1}{#3}}}%
+
+    \urlstyle{same}
+             
+     % FORMATTING SUBSECTIONS
+
+    \titleformat{\subsection}
+        [display]
+        {}
+        {\fontsize{12}{18}\color{melbBlue}\fontspec{Helvetica Neue}\textbf{#1}}
+        {0em}
+        {\vspace{-12pt}}
+
+    % FORMATTING SECTION HEADINGS
+
+    \titleformat{\section}
+        [display]
+        {\newpage}
+        {\begin{tcolorbox}[colback=melbBlue,arc=0mm,sharp corners,boxrule=0mm,spread sidewards, left*=0pt, right*=0pt, top=36pt, move upwards]
+            ~\vspace{12pt} \newline
+            \fontsize{24}{18}\color{white}\fontspec{Helvetica Neue}{#1}
+            ~\vspace{12pt}\end{tcolorbox}}
+        {0em}
+        {\vspace{-12pt}}
+
+
+    \newcommand{\lines}[1]{%
+      \foreach \n in {1,...,#1}%
+      {\vspace{16pt}\makebox[\linewidth]{\textcolor{black!50}{\dotfill}}\\}%
+     \vspace{30pt}%
+    }
+
+ \begin{document} 
+\section{Questions} 
+
+ \begin{enumerate} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Cardiometabolic-Syndrome-2217e00035bb4d999ce7d5b4f16ff92d}{ What is the significance of insulin resistance in metabolic syndrome?} 
+ \begin{enumerate}
+ \item • It leato high levels of HDL cholesterol
+ \item • It causan increase in visceral fat
+ \item • It results in low levels of triglycerides
+ \item • It leato high levels of glucose and small dense LDL particles
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Complications-of-diabetes-8ddddcd5b33741798fc788acb1719161}{ Which type of diabetic neuropathy is characterized by numbness and burning pain in the feet?} 
+ \begin{enumerate}
+ \item Autonomic neuropathy
+ \item Cranineuropathy
+ \item Periphersensory neuropathy
+ \item Mononeuritis multiplex
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Travel-Medicine-9056ae798e724a16b56ec93bf312ef5a}{ What is the diagnostic test of choice for malaria?} 
+ \begin{enumerate}
+ \item      Blood culture
+ \item      Urinalysis
+ \item      Thiand thin films with ICT card
+ \item      Dengue PCR with NS1 antigen
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Haemoptysis-Shortness-of-Breath-1231f6571aef41418d3ddfecbcca0294}{ What is the most common cause of hemoptysis?} 
+ \begin{enumerate}
+ \item      Vasculcongestion
+ \item      Bacteriinfection
+ \item      Angiogenesis
+ \item      Tumor necrosis
+ \item      Vasculinvasion
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Rheumatological-Red-Flags-f1e272d9fc58490c91d0dc71957262dc}{ What is the mechanism behind systemic inflammation?} 
+ \begin{enumerate}
+ \item Acute phase response triggered by cytokines
+ \item Increased oxidative stress
+ \item Impaired immune response
+ \item Elevated TGF-beta levels
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Sleep-Disorders-9096f10c9d284955b5fb754965e66fea}{ What are the manifestations of narcolepsy?} 
+ \begin{enumerate}
+ \item      Excessive daytime sleepiness and insomnia
+ \item      Hypnagogic hallucinations and sleepwalking
+ \item      Cataplexy and hypnagogic hallucinations
+ \item      Sleparalysis and restless legs syndrome
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/HIV-e8425ab8632542908ec36ddeca89de55}{ What is the recommended treatment for a patient who has been exposed to HIV and presents within 72 hours?} 
+ \begin{enumerate}
+ \item ART x 28 days
+ \item Truva(emtricitabine + tenofovir)
+ \item ART before exposure to prevent transmission
+ \item Test urinrectal swab and throat swab for gonorrhea/chlamydia
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Rheumatoid-Arthritis-6a0cf88ae3804bf28deb902f66fcfa47}{ What are the limitations of rheumatoid factor and anti-CCP antibody testing? How can seronegative rheumatoid arthritis still be diagnosed despite negative serology?} 
+ \begin{enumerate}
+ \item      Rheumatoid factor and anti-CCP have low specificity in early RA. Seronegative RA cstill be diagnosed based on clinical grounds.
+ \item      Rheumatoid factor and anti-CCP have low sensitivity in early RA. Seronegative RA cstill be diagnosed based on clinical grounds.
+ \item      Rheumatoid factor and anti-CCP have high specificity in early RA. Seronegative RA cstill be diagnosed based on clinical grounds.
+ \item      Rheumatoid factor and anti-CCP have high sensitivity in early RA. Seronegative RA cannot diagnosed.
+ \item      None of the above.
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Diseases-of-the-Pleura-d3e3c9bbf58540aeb0c0f9260d62cb08}{ What is the difference between a primary and a secondary spontaneous pneumothorax?} 
+ \begin{enumerate}
+ \item A primary spontaneous pneumothorax occurs in the absence of underlying lung disease, while a secondary spontaneous pneumothorax occurs in the presence of underlying lung disease
+ \item A primary spontaneous pneumothorax is caused by trauma, while a secondary spontaneous pneumothorax is caused by infection
+ \item A primary spontaneous pneumothorax is usually treated conservatively, while a secondary spontaneous pneumothorax is usually treated surgically
+ \item A primary spontaneous pneumothorax is more common in elderly patients, while a secondary spontaneous pneumothorax is more common in young patients
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Overview-of-Diabetes-Management-Oral-Agents-81f832bc2167485ea86646655d911d2a}{ Which oral agent should be considered as first-line therapy for a patient with type 2 diabetes and a BMI of 35?} 
+ \begin{enumerate}
+ \item Metformin
+ \item Sulfonylureas
+ \item Thiazolidinediones
+ \item Glucagon-like peptide-1 receptor agonists
+ \end{enumerate}} 
+
+ \vspace{12pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Clinical-Pharmacology-Case-Dyspnoea-24c8992694b148e6b305280805e36d1a}{ Describe the correct inhaler technique for delivering medication via a pMDI with spacer.} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Skin-Soft-Tissue-Bone-and-Joint-Infections-495d0e2013354cdabb0c692542250246}{ What are the risk factors and clinical features of chronic lymphedema that help differentiate it from cellulitis?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Diabetes-Management-Injectable-Agents-e411c62a865246eb8948e72d27a4c6bc}{ What are the short-term and long-term aims of blood glucose management?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Overview-of-Diabetes-Management-Oral-Agents-81f832bc2167485ea86646655d911d2a}{ How do GLP-1 receptor agonists differ from DPP-4 inhibitors in their effect on gastric emptying and appetite regulation, and how might this impact on patient management?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Acute-Kidney-Injury-e1ac3aaece0e41b8b6f264aed159df07}{ How does hyperkalemia in AKI occur and what are some quick-acting therapies for its management?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Epilepsy-885811c6268d4c05b5dacd9541850a0f}{ What are the different types of surgical options available for refractory cases of epilepsy, and how are they selected?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Epilepsy-885811c6268d4c05b5dacd9541850a0f}{ How can the use of antiepileptic drugs affect cognitive function in patients with epilepsy, and what strategies can be employed to mitigate these effects?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Rheumatoid-Arthritis-6a0cf88ae3804bf28deb902f66fcfa47}{ What are the treatment goals in rheumatoid arthritis? Why are DMARDs preferred over NSAIDs as a treatment option?
+} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Clinical-Pathology-Chronic-Kidney-Disease-60fba6f300a94462bae85f347433d15b}{ What are the most common causes of chronic kidney disease?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Clinical-Pathology-Tuberculosis-bf552be4dfd343499b2c88fd8776c33f}{ What are the clinical manifestations of tuberculosis, and how can they be differentiated from those of other respiratory tract infections?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Introduction-to-bariatric-syndromes-bd7faa5f432a4dbfaad7215533604702}{ What are the risks associated with central obesity?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Lymphoma-and-Myeloma-1eff452307b84bbb8c322dccc30bf017}{ Describe the abnormalities in immunoglobulin light chains seen in myeloma and explain their significance in diagnosis.} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Cardiometabolic-Syndrome-2217e00035bb4d999ce7d5b4f16ff92d}{ How does the metabolic syndrome increase the risk of cardiovascular disease and diabetes?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Infective-Heart-Disease-db7843efa7234f14a0504128e4dda2f4}{ What is tricuspid regurgitation? How does it present clinically? What are the common causes of this condition? Explain the management options for a patient with tricuspid regurgitation.} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Introduction-to-Inflammatory-Diseases-468a2e5ebf9345f0922b71a9aa3a5ed2}{ Can autoimmune diseases be triggered by neoplastic factors? If so, what are some examples?
+} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Interstitial-Lung-Disease-084cb0233f4b4ecaa47c7d4e5e643e01}{ How does smoking affect the risk of interstitial lung disease?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Introduction-to-bariatric-syndromes-bd7faa5f432a4dbfaad7215533604702}{ What is the definition of obesity and what is the grading system used?} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Clinical-Pathology-Chronic-Kidney-Disease-60fba6f300a94462bae85f347433d15b}{ What are the indications for renal replacement therapy in chronic kidney disease?
+} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Epilepsy-885811c6268d4c05b5dacd9541850a0f}{ How can the differential diagnosis of epilepsy be complicated by the presence of comorbid conditions, such as migraines or syncope?
+} 
+
+ \lines{5} }
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Lymphoma-and-Myeloma-1eff452307b84bbb8c322dccc30bf017}{ How does the treatment approach for myeloma differ in younger, fitter patients compared to elderly, frail patients?} 
+
+ \lines{5} }
+
+\end{enumerate}
+
+ \section{Solutions} 
+
+ \begin{multicols}{2} 
+\begin{enumerate} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Cardiometabolic-Syndrome-2217e00035bb4d999ce7d5b4f16ff92d}{ D. Insulin resistance leads to high levels of glucose and small dense LDL particles, which are highly atherogenic.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Complications-of-diabetes-8ddddcd5b33741798fc788acb1719161}{ C. Peripheral sensory neuropathy is characterized by numbness and burning pain in the feet.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Travel-Medicine-9056ae798e724a16b56ec93bf312ef5a}{ C. Thick and thin films with ICT card are the diagnostic test of choice for malaria, and should be repeated every 12-24 hours to increase sensitivity.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Haemoptysis-Shortness-of-Breath-1231f6571aef41418d3ddfecbcca0294}{ A. Vascular congestion. Vascular congestion is the most common cause of hemoptysis.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Rheumatological-Red-Flags-f1e272d9fc58490c91d0dc71957262dc}{ a. Acute phase response triggered by cytokines is the mechanism behind systemic inflammation.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Sleep-Disorders-9096f10c9d284955b5fb754965e66fea}{ C) The manifestations of narcolepsy include excessive daytime sleepiness, abnormally timed REM sleep, hypnagogic/hypnopompic hallucinations, sleep paralysis, and cataplexy.
+    ◦ Explanation: Recognizing these symptoms is important for diagnosing and treating narcolepsy.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/HIV-e8425ab8632542908ec36ddeca89de55}{ A. ART x 28 days. Post-exposure prophylaxis (PEP) with antiretroviral therapy (ART) should be started as soon as possible and within 72 hours of exposure to prevent HIV acquisition. PEP involves a 28-day course of ART and should be started as early as possible to maximize its effectiveness.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Rheumatoid-Arthritis-6a0cf88ae3804bf28deb902f66fcfa47}{ B. Rheumatoid factor and anti-CCP have low sensitivity in early RA, so seronegative RA can still be diagnosed based on clinical grounds. These tests are more useful for confirming a diagnosis in established disease rather than making a diagnosis in early RA.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Diseases-of-the-Pleura-d3e3c9bbf58540aeb0c0f9260d62cb08}{ Answer: a. A primary spontaneous pneumothorax occurs in the absence of underlying lung disease, while a secondary spontaneous pneumothorax occurs in the presence of underlying lung disease. A primary spontaneous pneumothorax is usually caused by the rupture of a subpleural bleb or bulla, while a secondary spontaneous pneumothorax is usually caused by underlying lung disease such as chronic obstructive pulmonary disease (COPD) or interstitial lung disease (ILD).}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Overview-of-Diabetes-Management-Oral-Agents-81f832bc2167485ea86646655d911d2a}{ D. Glucagon-like peptide-1 receptor agonists (GLP-1 RAs) should be considered as first-line therapy for patients with type 2 diabetes and a BMI of 35 or greater. They promote weight loss, have a low risk of hypoglycemia, and have cardiovascular benefits. Metformin is still recommended as initial therapy for most patients with type 2 diabetes, but may not be sufficient in patients with very high BMI.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Clinical-Pharmacology-Case-Dyspnoea-24c8992694b148e6b305280805e36d1a}{ The correct inhaler technique for delivering medication via a pMDI with spacer involves removing the inhaler cap, holding the inhaler upright and shaking it well, breathing out gently away from the inhaler, putting the mouthpiece between the teeth without biting and closing the lips to form a good seal, breathing in slowly through the mouth and pressing down firmly on the canister, keeping the breath in for about 5 seconds or as long as comfortable, removing the inhaler from the mouth while still holding the breath, breathing out gently away from the inhaler, and replacing the cap.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Skin-Soft-Tissue-Bone-and-Joint-Infections-495d0e2013354cdabb0c692542250246}{ Chronic lymphedema is characterized by bilateral non-pitting edema, woody induration of skin, and no systemic toxicity. Risk factors include trauma (especially recurrent), malignancy (and its treatment), chronic venous insufficiency, obesity, and inflammatory disorders (e.g. arthritis, dermatitis).}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Diabetes-Management-Injectable-Agents-e411c62a865246eb8948e72d27a4c6bc}{ The short-term aims of blood glucose management are to relieve symptoms of hyperglycemia, such as polyuria and poor wound healing due to an increase in infections from poor white cell function. The long-term aims of blood glucose management are to prevent or delay long-term diabetes complications, such as retinopathy, nephropathy, and neuropathy.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Overview-of-Diabetes-Management-Oral-Agents-81f832bc2167485ea86646655d911d2a}{ GLP-1 receptor agonists stimulate insulin secretion from pancreatic beta cells and inhibit glucagon secretion from alpha cells, which leads to decreased hepatic glucose production. They also slow gastric emptying and promote satiety, which may result in weight loss. DPP-4 inhibitors primarily work by increasing incretin hormone levels, which stimulates insulin release but does not have a significant effect on gastric emptying or appetite. GLP-1 receptor agonists may be more effective than DPP-4 inhibitors in patients with uncontrolled blood glucose levels or obesity.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Acute-Kidney-Injury-e1ac3aaece0e41b8b6f264aed159df07}{ Hyperkalemia in AKI occurs due to acute tubular necrosis, which can cause potassium to be released from injured cells into the bloodstream. Quick-acting therapies for hyperkalemia management include calcium gluconate, insulin/dextrose, salbutamol nebulizer, and HD/filtration.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Epilepsy-885811c6268d4c05b5dacd9541850a0f}{ Surgical options for refractory cases of epilepsy can include resection of the affected area of the brain, implantation of a vagus nerve stimulator, or other interventions such as corpus callosotomy. The selection of a particular surgical option depends on factors such as the location and extent of the epileptogenic focus, the patient's age and comorbidities, and the potential risks and benefits of each intervention.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Epilepsy-885811c6268d4c05b5dacd9541850a0f}{ Antiepileptic drugs can have a range of cognitive effects in patients with epilepsy, including impairment of memory, attention, and executive function. Strategies to mitigate these effects can include dose adjustments, switching to a different medication, or adjunctive use of cognitive enhancers such as modafinil or methylphenidate.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Rheumatoid-Arthritis-6a0cf88ae3804bf28deb902f66fcfa47}{ The treatment goals in rheumatoid arthritis are to reduce inflammation and prevent joint damage. DMARDs are preferred over NSAIDs because they prevent structural progression, while NSAIDs only provide symptom relief.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Clinical-Pathology-Chronic-Kidney-Disease-60fba6f300a94462bae85f347433d15b}{ The most common causes of chronic kidney disease are diabetes, hypertension, and glomerulonephritis. Other causes include polycystic kidney disease, autoimmune diseases, and obstructive uropathy.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Clinical-Pathology-Tuberculosis-bf552be4dfd343499b2c88fd8776c33f}{ The clinical manifestations of tuberculosis can include cough, fever, night sweats, weight loss, and hemoptysis. These symptoms may be similar to those of other respiratory tract infections, but tuberculosis should be suspected in patients with a persistent cough lasting more than 3 weeks, especially if they are immunocompromised or have a history of exposure to the disease.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Introduction-to-bariatric-syndromes-bd7faa5f432a4dbfaad7215533604702}{ Central obesity is associated with metabolic disturbances such as hyperinsulinemia, high fasting glucose, hypertriglyceridemia, and hypertension, which increase cardiovascular risk.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Lymphoma-and-Myeloma-1eff452307b84bbb8c322dccc30bf017}{ In myeloma, immunoglobulin light chains are restricted to kappa or lambda only. This demonstrates clonality of the malignant plasma cells and is used to diagnose the disease.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Cardiometabolic-Syndrome-2217e00035bb4d999ce7d5b4f16ff92d}{ Metabolic syndrome increases the risk of cardiovascular disease and diabetes by promoting the development of atherosclerosis, endothelial dysfunction, and inflammation. It also contributes to the development of insulin resistance and hyperglycemia, which can lead to the progression of diabetes and its complications.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Infective-Heart-Disease-db7843efa7234f14a0504128e4dda2f4}{undefined}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Introduction-to-Inflammatory-Diseases-468a2e5ebf9345f0922b71a9aa3a5ed2}{ Yes, autoimmune diseases can be triggered by neoplastic factors, such as paraneoplastic cerebellar degeneration in small cell lung cancer, breast cancer, ovarian cancer, and Hodgkin's lymphoma. Other examples include peripheral neuropathy and polymyalgia rheumatica.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Interstitial-Lung-Disease-084cb0233f4b4ecaa47c7d4e5e643e01}{ Smoking is a risk factor for interstitial lung disease, regardless of the disease a patient has. Smoking cessation is an important intervention in respiratory medicine.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Introduction-to-bariatric-syndromes-bd7faa5f432a4dbfaad7215533604702}{ Obesity is defined as a BMI over 30 and is further classified into categories of increasing severity based on BMI. Class one obesity is a BMI of 30-34.9, class two obesity is a BMI of 35-39.9, and class three obesity is a BMI of 40 or higher.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Clinical-Pathology-Chronic-Kidney-Disease-60fba6f300a94462bae85f347433d15b}{ Indications for renal replacement therapy in chronic kidney disease include symptomatic uremia, severe electrolyte abnormalities, persistent metabolic acidosis, and fluid overload refractory to diuretics. The decision to initiate renal replacement therapy should be individualized based on the patient's clinical status and preferences.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Epilepsy-885811c6268d4c05b5dacd9541850a0f}{ The differential diagnosis of epilepsy can be complicated by the presence of comorbid conditions such as migraines or syncope, which can mimic the symptoms of epilepsy. Careful consideration of the patient's medical history, physical examination findings, and diagnostic testing results can help differentiate between these conditions and guide treatment decisions.}} 
+
+ \vspace{6pt} 
+
+\parbox{\linewidth}{\item \href{https://www.notion.so/Lymphoma-and-Myeloma-1eff452307b84bbb8c322dccc30bf017}{ Younger, fitter patients may be candidates for autologous bone marrow transplantation after induction chemotherapy. Elderly, frail patients may only tolerate more conservative chemotherapy regimens.}} 
+
+ \vspace{6pt} 
+
+\end{enumerate}\end{multicols} 
+ \end{document}
